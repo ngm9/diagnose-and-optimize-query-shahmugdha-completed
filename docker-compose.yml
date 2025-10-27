@@ -1,0 +1,21 @@
+version: '3.9'
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: insightsnow_pg
+    restart: unless-stopped
+    ports:
+      - '5432:5432'
+    volumes:
+      - /root/task/data/pgdata:/var/lib/postgresql/data
+      - /root/task/init_database.sql:/docker-entrypoint-initdb.d/init_database.sql
+      - /root/task/sample_queries.sql:/docker-entrypoint-initdb.d/sample_queries.sql
+    networks:
+      - insightnet
+    environment:
+      - POSTGRES_DB=insightsnowdb
+      - POSTGRES_USER=insightsuser
+      - POSTGRES_PASSWORD=insightspass
+networks:
+  insightnet:
+    driver: bridge

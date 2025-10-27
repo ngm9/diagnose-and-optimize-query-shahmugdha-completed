@@ -1,0 +1,22 @@
+# PostgreSQL & Docker exclusions
+*.log
+*.sql.gz
+*.dump
+*.backup
+*.bak
+data/
+pgdata/
+*.pid
+*.sock
+# IDE/editor
+.vscode/
+.idea/
+__pycache__/
+*.swp
+*.swo
+logs/
+# System files
+.DS_Store
+Thumbs.db
+# Docker compose override
+/docker-compose.override.yml
